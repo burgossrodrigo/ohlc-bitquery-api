@@ -4,7 +4,8 @@
   "description": "datafeed for hokkfi dex",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "node index.js"
   },
   "keywords": [
     "datafeed",

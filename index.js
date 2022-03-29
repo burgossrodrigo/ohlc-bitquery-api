@@ -55,19 +55,7 @@ router.get('/', [], async (req, res) => {
         }` 
         }),
       })
-      .then(res => res.json())
-      .then(res => res.data.ethereum.dexTrades.map(chart =>{
-
-    changedData.push({
-      open: chart.open_price,
-      high: chart.maximum_price,
-      low: chart.minimum_price,
-      close: chart.close_price
-    });
-
-    }));
-
-    return res.json(changedData);
+      .then(res => () => { return res.json()})
 
 
 })

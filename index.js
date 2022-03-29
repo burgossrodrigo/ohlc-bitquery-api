@@ -17,10 +17,9 @@ app.listen(PORT, server_host, () => {
 
 router.get('/', [], async (req, res) => {
     
-    let changedData = []
     await fetch('https://graphql.bitquery.io', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', "X-API-KEY": "XXX" },
+        headers: { 'Content-Type': 'application/json', "X-API-KEY": "BQYpMaOs1jlSOr3CQdT0yzQMdld6r8Mn" },
         body: JSON.stringify({ query: `
         {
           ethereum(network: bsc) {

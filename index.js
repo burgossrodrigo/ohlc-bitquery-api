@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParse = require('body-parser')
 require('isomorphic-fetch');
+var cors = require('cors');
 
 const json = bodyParse.json
 const app = express();
@@ -62,7 +63,7 @@ router.get('/:chain/:address/:from/:to/:resolution', [], async (req, res) => {
         "Content-Type": "application/json",
         "X-API-KEY": "BQYpMaOs1jlSOr3CQdT0yzQMdld6r8Mn"
       },
-      mode: 'cors',
+      mode: 'no-cors',
       body: JSON.stringify({
         query: `
             {

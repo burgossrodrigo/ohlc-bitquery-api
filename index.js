@@ -16,14 +16,25 @@ app.listen(PORT, server_host, () => {
     console.log(`server is listening on port: ${PORT}`)
 })
 
-app.use((req, res, next) => {
-	//Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
-    res.header("Access-Control-Allow-Origin", "*");
-	//Quais são os métodos que a conexão pode realizar na API
-    res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
-    app.use(cors());
-    next();
-});
+app.use(cors({
+  origin: 'https://hokkfi-ohlc-api.herokuapp.com/'
+}));
+
+var allowedOrigins = ['http://localhost:3000',
+                      'https://hokkfi-ohlc-api.herokuapp.com/'];
+app.use(cors({
+  origin: function(origin, callback){
+    // allow requests with no origin 
+    // (like mobile apps or curl requests)
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){
+      var msg = 'The CORS policy for this site does not ' +
+                'allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 router.get('/:chain/:address/:from/:to/:resolution', [], async (req, res) => {
 

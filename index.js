@@ -20,7 +20,7 @@ app.use(cors({
   origin: 'https://hokkfi-ohlc-api.herokuapp.com/'
 }));
 
-var allowedOrigins = ['http://localhost:3000',
+var allowedOrigins = ['http://localhost:3000/#/swap',
                       'https://hokkfi-ohlc-api.herokuapp.com/'];
 app.use(cors({
   origin: function(origin, callback){

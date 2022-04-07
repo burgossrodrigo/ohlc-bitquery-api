@@ -42,6 +42,9 @@ router.get('/:network/:address/:from/:to/:resolution', cors(corsOptions), async 
 
     console.log('factory: ' + factoryAddress)
     console.log('ether: ' + quoteAddress)
+    console.log('base currency: ' + baseAddress)
+    console.log('from:' + from + ' to:' + to)
+    console.log('network ' + network + ' and resolution: ' + resolution)
 
     try{
     
@@ -56,7 +59,6 @@ router.get('/:network/:address/:from/:to/:resolution', cors(corsOptions), async 
         {
           ethereum(network: ${network}) {
             dexTrades(
-              options: {asc: "timeInterval.minute"}
               date: {since: "${from}", till: "${to}"}
               exchangeAddress: {is: "${factoryAddress}"}
               baseCurrency: {is: "${baseAddress}"}
